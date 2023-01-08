@@ -5,7 +5,7 @@ def extractSupertile(supertileFile):
     supertileExtractionPath = os.path.join('./', supertileFile.split('.')[0])
     os.mkdir(supertileExtractionPath)
 
-    tileRoot = [ int(supertileFile.split('_')[0]), int(supertileFile.split('_')[1].split('.')[0]) ]
+    tileRoot = [ int(supertileFile.split('_')[1].split('.')[0]), int(supertileFile.split('_')[0]) ] # Format is Y_X
 
     with open(supertileFile, 'rb') as file:
         # Read supertile data
@@ -30,7 +30,7 @@ def extractSupertile(supertileFile):
                 tileFile.write(bytearray([0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A])) # Write PNG Header (removed during .split)
                 tileFile.write(tile) # Write tile data
 
-            if (tileHorizontalIndex < 63): # supertiles are 64x64
+            if (tileHorizontalIndex < 64): # supertiles are 64x64
                 tileHorizontalIndex += 1
             else:
                 tileHorizontalIndex = 0
