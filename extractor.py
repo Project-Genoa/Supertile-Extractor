@@ -30,7 +30,7 @@ def extractSupertile(supertileFile):
                 tileFile.write(bytearray([0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A])) # Write PNG Header (removed during .split)
                 tileFile.write(tile) # Write tile data
 
-            if (tileHorizontalIndex < 64): # supertiles are 64x64
+            if (tileHorizontalIndex+1 < 64): # supertiles are 64x64
                 tileHorizontalIndex += 1
             else:
                 tileHorizontalIndex = 0
