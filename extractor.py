@@ -2,10 +2,10 @@ import os
 
 # Extract a Quale Supertile(tm)
 def extractSupertile(supertileFile):
-    supertileExtractionPath = os.path.join('./', supertileFile.split('.')[0])
-    os.mkdir(supertileExtractionPath)
+    tileRoot = [ int(supertileFile.split('_')[1].split('.')[0])*64, int(supertileFile.split('_')[0])*64 ] # Format is Y_X
 
-    tileRoot = [ int(supertileFile.split('_')[1].split('.')[0]), int(supertileFile.split('_')[0]) ] # Format is Y_X
+    supertileExtractionPath = os.path.join('./', str(tileRoot[0]) + '/' + str(tileRoot[0]) + '_' + str(tileRoot[1]))
+    os.makedirs(supertileExtractionPath, exist_ok=True)
 
     with open(supertileFile, 'rb') as file:
         # Read supertile data
