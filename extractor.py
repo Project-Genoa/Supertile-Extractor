@@ -26,7 +26,7 @@ def extractSupertile(supertileFile):
             print("Extracting supertile (" + supertileFile + "): [" + str(tileIndex+1) + '/' + str(len(splitTiles)-1) + '] - ' + tileName)
 
             # Create tile file
-            with open(os.path.join(supertileExtractionPath, str(tileName) + '.png'), 'wb') as tileFile:
+            with open(os.path.join(supertileExtractionPath, str(tileName) + '_16.png'), 'wb') as tileFile:
                 tileFile.write(bytearray([0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A])) # Write PNG Header (removed during .split)
                 tileFile.write(tile) # Write tile data
 
